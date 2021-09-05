@@ -11,9 +11,6 @@ interface CardValueProps {
 } 
 const Slides: React.FC<CardValueProps> = ({colorvalue })=>  {
   const [value1, setValue1] = useState(0);
-  function onSliderChange(value:Number) {
-    console.log(value);
-  };
   return (
     <Div className={` slidecard ${colorvalue}  wow fadeInDown`}>
       <div className="myrange">
@@ -58,14 +55,15 @@ const Slides: React.FC<CardValueProps> = ({colorvalue })=>  {
               <input type="text" placeholder="0.000"/>
               <div className="bal">Balance : 0.000</div>
               {/* @ts-ignore */}
-              <Slider color={{String:"brown"}} inverted={false}
-                    settings={{
+              <Slider settings={{
                       start: value1,
                       min: 0,
                       max: 100,
-                      step: 1,
-                    }} />
-                    <div className="val">{value1}</div>
+                      step: 1,                      
+                    }} 
+                    onChange={(e:any) => setValue1(e)} 
+                  />
+                    <div className="val">{value1}%</div>
               <button>
                 Enable
               </button>
@@ -168,6 +166,20 @@ const Div = styled.div`
     left:50%;
     transform:translateX(-50%);
     width: 100%;
+    .rc-slider-handle{
+      border: 1px solid #56C474;
+      width: 24px;
+      height: 24px;
+      margin-top: -9px;
+    }
+    .rc-slider-track{
+      background: #56C474;
+      height: 7px;
+    }
+    .rc-slider-rail{
+      background:rgba(86, 196, 116,0.2);
+      height: 7px;
+    }
     .header{
       h3{
         color: #2C7541;
@@ -258,6 +270,15 @@ const Div = styled.div`
       border: 1px solid #FFD2DD;
       bottom:unset;
       top:14px;
+      .rc-slider-handle{
+        border: 1px solid #FF678C;
+      }
+      .rc-slider-track{
+        background: #FF678C;
+      }
+      .rc-slider-rail{
+        background:rgba(255, 103, 140, 0.2);
+      }
       .header{
         h3{
           color: #7C2E41;
