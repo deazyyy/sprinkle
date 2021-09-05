@@ -28,7 +28,10 @@ const Sidebar: React.FC = () => {
   }
 
   return (
-    <Nav>
+    <Nav style={click ? {left:"0px"} : {left:"-270px"}}>
+      <div className="sidebtn" onClick={() => setClick(!click)}>
+        <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
+      </div>
       <nav className="navbar " onClick={(e) => e.stopPropagation()}>
         <div className="nav-container">
           <Link exact to="/" className="nav-logo">
@@ -115,6 +118,24 @@ const Nav = styled.nav`
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
+    transition:all 0.5s ease;
+   
+    .sidebtn{
+      background: #fff;
+      position: absolute;
+      right: -45px;
+      z-index: 10;
+      top: 25vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      box-shadow:0px 0px 5px 6px rgba(0,0,0,0.05); 
+      cursor:pointer;
+      display:none;
+    }
     .nav-container{
       width:100%;
     }
@@ -212,7 +233,14 @@ const Nav = styled.nav`
       }
     }
     @media screen and (max-width: 991px) {
-      display:none;
+      position:absolute;
+      z-index:999;
+      height:100vh;
+      top:0;
+      bottom:0;
+      .sidebtn{
+        display:flex;
+      }
     }
 `;
 
