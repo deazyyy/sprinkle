@@ -6,6 +6,7 @@ import Copy from "../../assets/Icons/Copy";
 import MagicWand from "../../assets/Icons/MagicWand";
 import Bnb from "../../assets/Icons/Bnb";
 import Bsclink from "../../assets/Icons/Bsclink";
+import { transform } from "typescript";
 
 
 
@@ -28,7 +29,10 @@ const Sidebar: React.FC = () => {
   }
 
   return (
+    <>
     <Nav style={click ? {left:"0px"} : {left:"-270px"}}>
+      
+      
       <div className="sidebtn" onClick={() => setClick(!click)}>
         <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
       </div>
@@ -100,7 +104,10 @@ const Sidebar: React.FC = () => {
           </div>
         </div>
       </nav>
+      <div className="overlay" style={!click?{transform:"scale(0)"}:{transform:"scale(1)"} }/> 
     </Nav>
+   
+    </>
   );
 };
 
@@ -119,7 +126,9 @@ const Nav = styled.nav`
     position: sticky;
     top: 0;
     transition:all 0.5s ease;
-   
+    .navbar{
+      background: #fff;
+    }
     .sidebtn{
       background: #fff;
       position: absolute;
@@ -233,11 +242,26 @@ const Nav = styled.nav`
       }
     }
     @media screen and (max-width: 991px) {
-      position:absolute;
+      max-width: 270px;
+      position:fixed;
       z-index:999;
-      height:100vh;
+      height:100%;
       top:0;
       bottom:0;
+      padding: 0px 0px 0;
+      .navbar{
+        padding-top:20px;
+        border=right: 1px solid rgba(141, 185, 223, 0.2);
+        box-sizing: border-box;
+        box-shadow: 0px 0px 6px rgba(93, 130, 163, 0.05), 3px 10px 19px rgba(93, 130, 163, 0.05);
+      }
+      .box{
+        margin-bottom:32px;
+        h4{
+          font-size:20px;
+          <margin-bottom:1></margin-bottom:1>0px;
+        }
+      }
       .sidebtn{
         display:flex;
       }
