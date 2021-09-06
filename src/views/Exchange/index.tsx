@@ -21,10 +21,10 @@ const Exchange: React.FC = () => {
           </ul>
       </div>
       <div className="tab-content">
-        <div className="tab-pane container active" id="exchangebx">
+        <div className="tab-pane active" id="exchangebx">
           <ExchangeCard/>
         </div>
-        <div className="tab-pane container fade" id="liquiditybx">
+        <div className="tab-pane fade" id="liquiditybx">
         <LiquidityCard/>
         </div>
       </div>
@@ -34,12 +34,15 @@ const Exchange: React.FC = () => {
 
 const Div = styled.section`
     .sectionnav{
+      margin-bottom:50px;
+      display:flex;
       .nav{
         position:absolute;
         left:50%;
         top:50%;
         transform:translate(-50%,-50%)
       }
+      
     }
     .nav{
       border: 1px solid rgba(253, 199, 25, 0.3);
@@ -61,6 +64,25 @@ const Div = styled.section`
           color:#fff
         }
       }
+    }
+
+    @media screen and (max-width: 500px) {
+      .card{
+        width:100%;
+        padding:20px 22px
+      }
+      .sectionnav{
+        flex-direction:column !important;
+        .nav{
+          margin-top:30px;
+          position:relative;;
+          left:50%;
+          top:0%;
+          transform:translate(-50%,0%)
+        }
+      }
+      
+      
     }
 `;
 

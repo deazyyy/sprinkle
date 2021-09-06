@@ -14,7 +14,7 @@ import { transform } from "typescript";
 const Sidebar: React.FC = () => {
   const [click, setClick] = useState(false);
   const [isconnected, setIsconnected] = useState(true);
-
+  const textAreaRef = useRef(null);
   const handleClick = () => setClick(!click);
   const Close = () => setClick(false);
   const [activenm, setActivenm] = useState("home");
@@ -27,7 +27,6 @@ const Sidebar: React.FC = () => {
       handleClick()
     }
   }
-
   return (
     <>
     <Nav style={click ? {left:"0px"} : {left:"-270px"}}>
@@ -43,9 +42,9 @@ const Sidebar: React.FC = () => {
           </Link>
           <div className="box">
             <h4>Your Adress</h4>
-            <div className="iptouter">
-              <input type="text" value="sdf23432c5646.." readOnly/>
-              <Copy/>
+            <div className="iptouter" onClick={() => {navigator.clipboard.writeText(textAreaRef.current.value)}}>
+              <input   ref={textAreaRef} type="text" value="sdf23432c5646.." readOnly/>
+              <Copy />
             </div>
           </div>
           <div className="box">
@@ -178,7 +177,12 @@ const Nav = styled.nav`
           position:absolute;
           right:14px;
           top:50%;
-          transform:translateY(-50%)
+          transform:translateY(-50%);
+          cursor:pointer;
+          transition:all 0.3s ease;
+          &:hover{
+            transform:scale(1.1)translateY(-50%)
+          }
         }
       }
 

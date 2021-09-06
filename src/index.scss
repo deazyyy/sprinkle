@@ -9,7 +9,10 @@ body {
   
 }
 
-
+*{
+  scrollbar-color: #F2F2F2 transparent;
+  scrollbar-width: thin;
+}
 
 ::-webkit-scrollbar-track
 {

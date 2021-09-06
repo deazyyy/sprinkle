@@ -1,13 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 
-import Slides from "./components/Slides";
+import FlipCard from "./components/Flipcard";
 import Predict from "../../assets/Icons/Slug/Predict";
 import Slider from "react-slick";
 import Timer from "../../assets/Icons/Timer";
 import Bnb from "../../assets/Icons/Bnb";
 import Arrow from "../../assets/Icons/DropdownArrow";
+import ReactCardFlip from "react-card-flip";
 const Prediction2: React.FC = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isup, setIsup] = useState(true);
   const slider = useRef(null);
   
   var settings = {
@@ -83,31 +86,25 @@ const Prediction2: React.FC = () => {
       </div>
       <Slider ref={slider}  {...settings} className="wow fadeInDown" data-wow-duration="0.9s" data-wow-delay="1s">
           <div>
-          <Slides colorvalue="green" status="active"/>
+            <FlipCard colorvalue="green" />
           </div>
           <div>
-          <Slides colorvalue="red"/>
+            <FlipCard colorvalue="red" />
           </div>
           <div>
-          <Slides colorvalue="neutral"/>
+            <FlipCard colorvalue="green"  status="active"/>
           </div>
           <div>
-          <Slides colorvalue="green" status="active"/>
+            <FlipCard colorvalue="red" status="active"/>
           </div>
           <div>
-          <Slides colorvalue="red"/>
+            <FlipCard colorvalue="green" />
           </div>
           <div>
-          <Slides colorvalue="neutral"/>
+            <FlipCard colorvalue="red" />
           </div>
           <div>
-          <Slides colorvalue="green" status="active"/>
-          </div>
-          <div>
-          <Slides colorvalue="red"/>
-          </div>
-          <div>
-          <Slides colorvalue="neutral"/>
+            <FlipCard colorvalue="green" status="active"/>
           </div>
       </Slider>
       
@@ -117,6 +114,9 @@ const Prediction2: React.FC = () => {
 };
 
 const Div = styled.section`
+.slick-list{
+  overflow:hidden;
+}
 .sectionnav{
   margin-bottom:50px;
   display:flex;
