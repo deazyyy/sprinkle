@@ -49,13 +49,13 @@ const Navbar: React.FC = () => {
                 <Nvic1/>Home
               </Link>
             </li>
-            <li className={isActive("pred") ? "nav-item active" : `nav-item`}>
+            <li className={isActive("exchange") ? "nav-item active" : `nav-item`}>
               <Link
                 exact
-                to="/prediction"
+                to="/exchange"
                 activeClassName="active"
                 className="nav-links"
-                onClick={() => onlinkclick("pred")}
+                onClick={() => onlinkclick("exchange")}
                 className="nav-links"
               >
                 <Nvic2/>Trade
@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
             <li className="nav-item" className={isActive("pred2") ? "nav-item active" : `nav-item`}>
               <Link
                 exact
-                to="/prediction2"
+                to="/prediction"
                 activeClassName="active"
                 onClick={() => onlinkclick("pred2")}
                 className="nav-links"

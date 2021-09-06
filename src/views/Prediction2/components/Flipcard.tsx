@@ -12,7 +12,7 @@ const FlipCard: React.FC<CardValueProps> = ({colorvalue ,status})=>  {
   return (
     <div onMouseEnter={() => setIsFlipped(true)} onMouseLeave={() => setIsFlipped(false)}>
       <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal"  >
-            <Slides colorvalue={colorvalue} status={status} />
+            <Slides colorvalue="neutral" status={status} />
             <Slides colorvalue="neutral"/>
       </ReactCardFlip>
   </div>

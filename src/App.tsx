@@ -8,6 +8,7 @@ import Pool from './views/Pool'
 import Prediction from './views/Prediction'
 import Prediction2 from './views/Prediction2'
 import Exchange from './views/Exchange'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -34,10 +35,10 @@ function App() {
                   <Route path="/farm">
                     <Pool tokenMode/>
                   </Route>
-                  <Route path="/prediction">
-                    <Prediction />
+                  <Route path="/exchange">
+                    <Exchange />
                   </Route>
-                  <Route path="/prediction2">
+                  <Route path="/prediction">
                     <Prediction2 />
                   </Route>
                   <Route path="/exchange">

@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 
 import FlipCard from "./components/Flipcard";
+
+import Slides from "./components/Slides";
 import Predict from "../../assets/Icons/Slug/Predict";
 import Slider from "react-slick";
 import Timer from "../../assets/Icons/Timer";
@@ -84,8 +86,28 @@ const Prediction2: React.FC = () => {
           </div>
         </div>
       </div>
+{/*       
+      <Slides colorvalue="red"/> */}
       <Slider ref={slider}  {...settings} className="wow fadeInDown" data-wow-duration="0.9s" data-wow-delay="1s">
-          <div>
+        <div>
+          <Slides colorvalue="green"/>
+        </div>
+        <div>
+          <Slides colorvalue="red" status="active"/>
+        </div>
+        <div>
+          <Slides colorvalue="green"/>
+        </div>
+        <div>
+          <Slides colorvalue="red"/>
+        </div>
+        <div>
+          <Slides colorvalue="green" status="active"/>
+        </div>
+        <div>
+          <Slides colorvalue="red"/>
+        </div>
+          {/* <div>
             <FlipCard colorvalue="green" />
           </div>
           <div>
@@ -105,7 +127,7 @@ const Prediction2: React.FC = () => {
           </div>
           <div>
             <FlipCard colorvalue="green" status="active"/>
-          </div>
+          </div> */}
       </Slider>
       
       
@@ -115,7 +137,11 @@ const Prediction2: React.FC = () => {
 
 const Div = styled.section`
 .slick-list{
-  overflow:hidden;
+  overflow-x:hidden;
+  height: 520px;
+}
+.slick-track{
+  overflow-y:hidden;
 }
 .sectionnav{
   margin-bottom:50px;

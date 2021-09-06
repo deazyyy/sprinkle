@@ -8,44 +8,18 @@ import 'rc-slider/assets/index.css';
 
 interface CardValueProps {
   colorvalue?: string,
+  setIsFlipped: (value: boolean | ((prevVar: boolean) => boolean)) => void;
 } 
-const Slides: React.FC<CardValueProps> = ({colorvalue })=>  {
+const PriceCard: React.FC<CardValueProps> = ({colorvalue,setIsFlipped })=>  {
   const [value1, setValue1] = useState(0);
   return (
-    <Div className={` slidecard ${colorvalue}  wow fadeInDown`}>
-      <div className="myrange">
-          <div className="values">
-            <b>0X</b>  Payout
-          </div>
-          <div className="middle">
-            <div className="tparrow">
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg" className="whitearrow">
-                <path d="M5.33314 0.278508C5.70005 -0.0928341 6.29897 -0.092835 6.66588 0.278507L11.7264 5.40018C12.3124 5.9932 11.893 7 11.0601 7L0.938958 7C0.105999 7 -0.313359 5.9932 0.272589 5.40018L5.33314 0.278508Z" fill="#fff"/>
-              </svg>
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"  className="coloredarrow">
-                <path d="M5.33314 0.278508C5.70005 -0.0928341 6.29897 -0.092835 6.66588 0.278507L11.7264 5.40018C12.3124 5.9932 11.893 7 11.0601 7L0.938958 7C0.105999 7 -0.313359 5.9932 0.272589 5.40018L5.33314 0.278508Z" fill="#56C474"/>
-              </svg>
-
-            </div>
-            <div className="middleouter"><div className="middleinner"></div></div>
-            <div className="btmarrow">
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg" className="whitearrow">
-                <path d="M5.33314 0.278508C5.70005 -0.0928341 6.29897 -0.092835 6.66588 0.278507L11.7264 5.40018C12.3124 5.9932 11.893 7 11.0601 7L0.938958 7C0.105999 7 -0.313359 5.9932 0.272589 5.40018L5.33314 0.278508Z" fill="#fff"/>
-              </svg>
-              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"  className="coloredarrow">
-                <path d="M5.33314 0.278508C5.70005 -0.0928341 6.29897 -0.092835 6.66588 0.278507L11.7264 5.40018C12.3124 5.9932 11.893 7 11.0601 7L0.938958 7C0.105999 7 -0.313359 5.9932 0.272589 5.40018L5.33314 0.278508Z" fill="#56C474"/>
-              </svg>
-            </div>
-          </div>
-          <div className="values">
-            <b>1X</b>  Payout
-          </div>
-      </div>
+    <Div className={` slidepricecard ${colorvalue}`}>
       {
         colorvalue!="neutral"?
           <div className="slider">
             <div className="header">
-              <h3>Stake LP Tokens</h3>
+              <h3>Stake LP Tokens <i  onClick={()=>setIsFlipped(false)} className="fas fa-close"></i></h3>
+              
             </div>
             <div className="body">
               <div className="mrow">
@@ -87,85 +61,19 @@ const Div = styled.div`
 
 
 
-&.slidecard{
+&.slidepricecard{
   position:relative;
   max-width:650px;
   min-width:300px;
   margin:0 10px;
-  .myrange{
-    background: rgba(86, 196, 116, 0.1);
-    border-radius: 10px;
-    text-align:center;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    align-items:center;
-    padding:16px;
-    height: 436px;
-    max-width:200px;
-    width:90%;
-    margin:auto;
-    .values{
-      color: #56C474;
-    }
-    .middle{
-      .tparrow{
-        position:relative;
-        .whitearrow{
-          transform:scale(2.2);
-        }
-        .coloredarrow{
-          position:absolute;
-          left: 50%;
-          top: 10px;
-          transform: translateX(-50%);
-        }
-      }
-      .btmarrow{
-        position:relative;
-        transform:rotate(180deg);
-        .whitearrow{
-          transform:scale(2.2);
-        }
-        .coloredarrow{
-          position:absolute;
-          left: 50%;
-          top: 10px;
-          transform: translateX(-50%);
-        }
-      }
-      .middleouter{
-        margin:10px 0;
-        height:273px;
-        background:rgba(86, 196, 116, 0.15);
-        width:16px;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        padding:6px 0;
-        border-radius:4px;
-        .middleinner{
-          background:rgba(86, 196, 116, 1);
-          width:3px;
-          height:100%;
-          border-radius:100px;
-          overflow:hidden;
-        }
-      }
-    }
-  }
   .slider{
     border: 1px solid rgba(86, 196, 116, 0.3);
     box-sizing: border-box;
     box-shadow: 0px 0px 6px rgba(93, 130, 163, 0.05), 3px 10px 19px rgba(93, 130, 163, 0.05);
     border-radius: 10px;
     overflow:hidden;
-    position:absolute;
-    bottom:14px;
-    // display:none;
-    left:50%;
-    transform:translateX(-50%);
     width: 100%;
+    padding:0 !important;
     .rc-slider-handle{
       border: 1px solid #56C474;
       width: 24px;
@@ -181,13 +89,23 @@ const Div = styled.div`
       height: 7px;
     }
     .header{
+      position:relative;
+      .fa-close{
+        color: #2C7541;
+        cursor:pointer;
+        position:absolute;
+        top:18px;
+        right:20px;
+      }
       h3{
         color: #2C7541;
-        font-size:18px;
+        font-size:17px;
         background:#EFFAF2;
         padding:16px 14px;
         text-align:center;
-        margin:0
+        margin:0;
+        width:100%;    
+        font-weight:600;   
       }
     }
 
@@ -280,6 +198,9 @@ const Div = styled.div`
         background:rgba(255, 103, 140, 0.2);
       }
       .header{
+        .fa-close{
+          color: #7C2E41;
+        }
         h3{
           color: #7C2E41;
           background:#FFF0F4;
@@ -357,4 +278,4 @@ const Div = styled.div`
 `;
 
 
-export default Slides;
+export default PriceCard;

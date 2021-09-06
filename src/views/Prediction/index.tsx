@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 
-import Slides from "./components/Slides";
+// import Slides from "./components/Slides";
 import Predict from "../../assets/Icons/Slug/Predict";
 
 const Prediction: React.FC = () => {
@@ -10,11 +10,11 @@ const Prediction: React.FC = () => {
       <div className="sectionnav">
         <div className="navslug"><Predict/> Predictions</div>
       </div>
-     <div className="slidesOuter">
+     {/* <div className="slidesOuter">
      <Slides colorvalue="green"/>
       <Slides colorvalue="red"/>
       <Slides colorvalue="neutral"/>
-     </div>
+     </div> */}
       
     </Div>
   );
