@@ -113,21 +113,25 @@ const Sidebar: React.FC = () => {
 
 const Nav = styled.nav`
     background: #FFFFFF;
-    border=right: 1px solid rgba(141, 185, 223, 0.2);
+    border-right: 1px solid rgba(141, 185, 223, 0.2);
     box-sizing: border-box;
     box-shadow: 0px 0px 6px rgba(93, 130, 163, 0.05), 3px 10px 19px rgba(93, 130, 163, 0.05);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    height:100vh;
     padding: 20px 0px 0;
     min-width:270px;
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
     transition:all 0.5s ease;
+    max-height:100vh;
+    overflow:hidden;
+    margin:0;
+    padding:0;
     .navbar{
       background: #fff;
       height: 100vh;
+      // padding:14px !important
     }
     .sidebtn{
       background: #fff;
