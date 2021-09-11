@@ -125,7 +125,7 @@ const Nav = styled.nav`
     top: 0;
     transition:all 0.5s ease;
     max-height:100vh;
-    overflow:hidden;
+    // overflow:hidden;
     margin:0;
     padding:0;
     .navbar{
