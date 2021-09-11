@@ -26,6 +26,12 @@ const Navbar: React.FC = () => {
       handleClick()
     }
   }
+  const body = document.querySelector("body");
+  if(click){
+    body.style.overflow = "hidden";
+  } else{
+    body.style.overflow = "scroll";
+  }
 
   return (
     <Nav className="wow fadeInDown " data-wow-duration="0.6s" data-wow-delay="0.5s">
@@ -275,6 +281,16 @@ const Nav = styled.nav`
   }
 
   @media screen and (max-width: 960px) {
+    .nav-logo{
+      img{
+        width:120px;
+        margin-bottom:20px;
+      }
+    }
+    .navbar {
+      height: 40px !important;
+      margin-top: 30px;
+    }
     .nav-item:after{
       left: 50%;
       max-width: 60px !important;
@@ -293,6 +309,7 @@ const Nav = styled.nav`
       margin-top:40px
     }
     .nav-menu {
+      padding:0;
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -339,6 +356,9 @@ const Nav = styled.nav`
       justify-content: space-between;
       padding: 20px;
       align-items: center;
+      .fa{
+        font-size:20px
+      }
     }
   }
   @media screen and (max-width: 960px) {

@@ -127,6 +127,7 @@ const Nav = styled.nav`
     transition:all 0.5s ease;
     .navbar{
       background: #fff;
+      height: 100vh;
     }
     .sidebtn{
       background: #fff;
@@ -146,6 +147,7 @@ const Nav = styled.nav`
     }
     .nav-container{
       width:100%;
+      height:100%;
     }
     .nav-logo{
       img{
@@ -262,8 +264,20 @@ const Nav = styled.nav`
       .box{
         margin-bottom:32px;
         h4{
-          font-size:20px;
-          <margin-bottom:1></margin-bottom:1>0px;
+          font-size:16px;
+          margin-bottom:10px
+        }
+        .mrowtrans{
+          font-size:14px;
+        }
+      }
+      .transrowouter{
+        height:calc( 100vh - 560px) !important;
+      }
+      .nav-logo{
+        img{
+          width:120px;
+          margin-bottom:20px;
         }
       }
       .sidebtn{
