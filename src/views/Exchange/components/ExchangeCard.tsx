@@ -6,6 +6,7 @@ import Timer from "../../../assets/Icons/Timer";
 import DropdownArrow from "../../../assets/Icons/DropdownArrow";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import SettingsModal from "../Modals/Settings"
 
 
 interface CardValueProps {
@@ -13,6 +14,7 @@ interface CardValueProps {
   status?: string,
 } 
 const ExchangeCard: React.FC<CardValueProps> = ({colorvalue ,status})=>  {
+  const settingRef = useRef(null);
   const [value1, setValue1] = useState(0);
   function onSliderChange(value:Number) {
     console.log(value);
@@ -49,13 +51,16 @@ const ExchangeCard: React.FC<CardValueProps> = ({colorvalue ,status})=>  {
   )
   return (
     <Div className={`card`}>
+      {/* @ts-ignore */}
+      <SettingsModal ref={settingRef}/>
       <div className="header">
         <div>
           <h3>Exchange</h3>
           Trade tokens in an instant
         </div>
         <div className="ic-bx-outer">
-          <span className="ic-bx mr-2"><Settings/></span>
+           {/* @ts-ignore */}
+          <span className="ic-bx mr-2" onClick={()=> settingRef.current.openModal()}><Settings/></span>
           <span className="ic-bx"><Timer/></span>
         </div>
       </div>

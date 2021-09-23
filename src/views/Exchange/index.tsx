@@ -3,12 +3,13 @@ import styled from "styled-components";
 
 import ExchangeCard from "./components/ExchangeCard";
 import LiquidityCard from "./components/LiquidityCard";
-
 import Farm from "../../assets/Icons/Slug/Farm";
 
+
 const Exchange: React.FC = () => {
+  
   return (
-    <Div>
+    <Div>     
       <div className="sectionnav">
         <div className="navslug"><Farm/> Farm</div>
           <ul className="nav nav-pills">
