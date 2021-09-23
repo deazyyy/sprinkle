@@ -8,7 +8,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import SettingsModal from "../Modals/Settings"
 import SelectToken from "../Modals/SelectToken"
-
+ import Addliquidity from "./Addliquidity"
 
 interface CardValueProps {
   colorvalue?: string,
@@ -17,22 +17,14 @@ interface CardValueProps {
 const LiquidityCard: React.FC<CardValueProps> = ({colorvalue ,status})=>  {
   const settingRef = useRef(null);
   const selectRef = useRef(null);
-  const [value1, setValue1] = useState(0);
-  function onSliderChange(value:Number) {
-    console.log(value);
-  };
-
+  const [addliq, setAddliq] = React.useState(false);
   const options = [
     'BNB', 'BNB', 'BNB'
   ];
-  const defaultOption = options[0];
-  const arrowClosed = (
-    <span ><DropdownArrow/></span>
-  )
-  const arrowOpen = (
-    <span className="arrow-open" ><DropdownArrow/></span>
-  )
+
   return (
+    <>
+    { !addliq ?
     <Div className={`card`}>
       {/* @ts-ignore */}
       <SettingsModal ref={settingRef}/><SelectToken ref={selectRef}/>
@@ -54,8 +46,12 @@ const LiquidityCard: React.FC<CardValueProps> = ({colorvalue ,status})=>  {
          {/* @ts-ignore */}
         <button onClick={()=> selectRef.current.openModal()}>Find other LP tokens</button>
       </div>
-      <button className="respbtn">+ Add Liquidity</button>
+      <button className="respbtn" onClick={() => setAddliq(true)}>+ Add Liquidity</button>
     </Div>
+    :
+    <Addliquidity setAddliq={setAddliq}/>
+  }
+    </>
   );
 };
 
