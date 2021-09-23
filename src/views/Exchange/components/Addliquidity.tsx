@@ -17,6 +17,8 @@ interface CardValueProps {
 const Addliquidity: React.FC<CardValueProps> = ({colorvalue ,status,setAddliq})=>  {
   const settingRef = useRef(null);
   const [value1, setValue1] = useState(0);
+  const [from, setFrom] = useState(1);
+  const [toval, setToval] = useState(10);
   function onSliderChange(value:Number) {
     console.log(value);
   };
@@ -70,28 +72,40 @@ const Addliquidity: React.FC<CardValueProps> = ({colorvalue ,status,setAddliq})=
       </div>
       <div className="body">
         <div className="inputbx ">
-          <small>From</small>
+          <div className="mrowtop">
+            <small>From</small>
+            <small>Balance : 0.19683</small>
+          </div>
           <div className="mrow ">
             <input type="text" placeholder="0.00" />
-            <Dropdown 
-               arrowClosed={arrowClosed}
-               arrowOpen={arrowOpen}
-              options={options} 
-               value={defaultOption} 
-               placeholder="Select an option" />
+            <div className="selcrow">
+              <button onClick={() => setFrom(100)}>MAX</button>
+              <Dropdown 
+                arrowClosed={arrowClosed}
+                arrowOpen={arrowOpen}
+                  options={options} 
+                value={defaultOption} 
+                placeholder="Select an option" />
+            </div>
           </div>
         </div>
         <br />
         <div className="inputbx mt-4">
-          <small>To</small>
+          <div className="mrowtop">
+            <small>To</small>
+            <small>Balance : 0.19683</small>
+          </div>
           <div className="mrow">
             <input type="text" placeholder="0.00" />
-            <Dropdown 
-               arrowClosed={arrowClosed}
-               arrowOpen={arrowOpen}
-              options={options} 
-               value={defaultOption} 
-               placeholder="Select an option" />
+            <div className="selcrow">
+              <button onClick={() => setFrom(100)}>MAX</button>
+              <Dropdown 
+                arrowClosed={arrowClosed}
+                arrowOpen={arrowOpen}
+                  options={options} 
+                value={defaultOption} 
+                placeholder="Select an option" />
+            </div>
           </div>
         </div>
       </div>
@@ -109,6 +123,8 @@ const Div = styled.div`
     justify-content:space-between;
     font-size:14px;
     margin-bottom:36px;
+    
+    
     .mrow{
       display:flex;
       align-items:center;
@@ -141,6 +157,26 @@ const Div = styled.div`
       background:rgba(141, 185, 223, 0.1);
       border-radius: 10px;
       padding:8px 10px;
+      .selcrow{
+        display:flex;
+        align-items:center;
+        button{
+          min-width:unset;
+          background:transparent;
+          color:#375976;
+          font-size:12px;
+          font-weight:600;
+          border:0 !important;
+          // padding:0;
+          transform:Scale(1) !important
+        }
+      }
+      .mrowtop{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:6px
+      }
       .mrow{
         display:flex;
         justify-content:center;
